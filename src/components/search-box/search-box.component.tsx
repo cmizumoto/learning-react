@@ -1,5 +1,7 @@
 // import { Component } from "react";
-import { ChangeEventHandler } from "react";
+// import { ChangeEventHandler } from "react";
+// We can also define our own definition instead the function definition above
+import { ChangeEvent } from "react";
 import "./search-box.styles.css";
 
 // const variable: string = 'string'
@@ -16,8 +18,11 @@ import "./search-box.styles.css";
 
 type SearchBoxProps = {
   className: string;
+  // we use ? in placeholder to not be a required argument
+  // I don't know if this is still optional chaining or not
   placeholder?: string;
-  onChangeHandler: ChangeEventHandler<HTMLInputElement>;
+  // Since we are not returning anything from this onChangeHandler, we specify void otherwise could be a string, boolean, number etc
+  onChangeHandler: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
 const SearchBox = ({ className, placeholder, onChangeHandler }: SearchBoxProps) => (
